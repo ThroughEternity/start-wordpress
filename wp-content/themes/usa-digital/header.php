@@ -37,47 +37,19 @@
         </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="mainNav">
-          <?php wp_nav_menu( [
+          <?php 
+          wp_nav_menu( [
 	'theme_location'  => 'header',
-	'container'       => 'false',
+	'container'       => false,
 	'menu_class'      => 'navbar-nav',
-	'menu_id'         => 'false',
+	'menu_id'         => false,
 	'echo'            => true,
 	'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-] ); ?>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/"> Главная </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarWelcome"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                >О нас</a
-              >
-              <div class="dropdown-menu" aria-labelledby="navbarWelcome">
-                <a class="dropdown-item" href="about.html"> О компании </a>
-                <a class="dropdown-item" href="about.html"> Об услугах </a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link smoth-scroll" href="service.html">Услуги</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link smoth-scroll" href="pricing.html">Цены</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link smoth-scroll" href="blog.html">Журнал</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link smoth-scroll" href="contact.html">Контакты</a>
-            </li>
-          </ul>
+	'depth'           => 2,
+	'walker'          => new bootstrap_4_walker_nav_menu(),
+] ); 
+?>
+          
         </div>
       </div>
     </nav>
