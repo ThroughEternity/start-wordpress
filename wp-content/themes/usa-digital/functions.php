@@ -60,8 +60,32 @@ wp_deregister_script( 'jquery' );
 	wp_enqueue_script( 'contact', get_template_directory_uri() . '/plugins/jquery/contact.js', array('jquery'), '1.0.0', true );
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array('jquery'), '1.0.0', true );
 	
+}
 
 
+/**
+ * Регистрируем сразу несколько областей меню .
+ *
+ */
+function usa_digital_menus() {
+// собираем области меню 
+	$locations = array(
+		'header'  => __( 'Header Menu', 'usa_digital' ),	
+		'footer'   => __( 'Footer Menu', 'usa_digital' ),	
+	);
+//регистрируем области меню лежалие в переменной $locations
+	register_nav_menus( $locations );
+}
+// хук событие
+add_action( 'init', 'usa_digital_menus' );
 
+//добавление класса nav-item ко всем пунктам меню
 
+add_filter( 'nav_menu_css_class', 'custom_nav_menu_css_class', 10, 1 );
+// получаем список всех классов пунктов меню 
+function custom_nav_menu_css_class ($classes) {
+	//добавляем к списку классов свой nav-item
+$classes[] = 'nav-item';
+//возвращаем список классов уже с нашим классом
+return $classes;
 }
