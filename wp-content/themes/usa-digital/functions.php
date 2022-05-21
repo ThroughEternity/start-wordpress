@@ -2,6 +2,7 @@
 
 if (! function_exists('band_digital_setap')) {
 	function band_digital_setap(){
+		//пользовательский логотип
 		add_theme_support( 'custom-logo', [
 			'height'      => 50,
 			'width'       => 130,
@@ -10,6 +11,8 @@ if (! function_exists('band_digital_setap')) {
 			'header-text' => '',
 			'unlink-homepage-logo' => false, // WP 5.5
 		]  );
+		//добавляем динамический <title>
+		add_theme_support('title-tag');
 	}
 	add_action( 'after_setup_theme', 'band_digital_setap');
 }
