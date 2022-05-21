@@ -89,3 +89,10 @@ $classes[] = 'nav-item';
 //возвращаем список классов уже с нашим классом
 return $classes;
 }
+
+add_filter('nav_menu_link_attributes', 'custom_nav_menu_link_attributes');
+
+function custom_nav_menu_link_attributes ($atts) {
+$atts ['class'] = 'nav-link';
+return $atts;
+}
